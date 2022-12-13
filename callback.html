@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback</title>
+</head>
+<body>
+    <p id="callback"></p>
+    <p id="demo"></p>
+    <script>
+        function myFunction(result) {
+    document.getElementById("callback").innerHTML = result;
+}
+function fun1() {
+    myFunction("Hello");
+}
+function fun2() {
+    myFunction("World");
+}
+fun1();
+fun2();
+
+
+
+
+//create an array
+const numbers = [13, 76, -12, 53, -78, 15 ,34, -27];
+//calling removenegative with a callback
+const positivenumber = removenegative(numbers, (x)=> x >= 0);
+//display result
+document.getElementById("demo").innerHTML = positivenumber;
+//removing negative number
+function removenegative(numbers, callback) {
+    const myArr = [ ];
+    for (const x of numbers) {
+        if (callback(x)) {
+            myArr.push(x);
+        }
+    }
+    return myArr;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

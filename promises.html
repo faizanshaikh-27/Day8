@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+</head>
+<body>
+    <p id="promises"></p>
+    <p id="demo"></p>
+    <script>
+        function JS_promises(result){
+    document.getElementById("promises").innerHTML = result;
+}
+
+let promise = new Promise(function(resolve, reject){
+    let x = 0;
+    // producing code will take some time
+    // resolve(); //when sucessfull
+    // reject();  //when error
+    
+    // (try to change x to 5)
+    if(x==0){
+        resolve("OK");
+    }
+    else{
+        reject("Error");
+    }
+});
+
+promise.then(
+    function(value) {JS_promises(value);},
+    function(error) {JS_promises(error);}
+);
+
+
+
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+let myPromise = new Promise(function(myResolve, myReject) {
+  let req = new XMLHttpRequest();
+  req.open('GET', "image1");
+  req.onload = function() {
+    if (req.status == 200) {
+      myResolve(req.response);
+    } else {
+      myReject("File not Found");
+    }
+  };
+  req.send();
+});
+
+myPromise.then(
+  function(value) {myDisplayer(value);},
+  function(error) {myDisplayer(error);}
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
